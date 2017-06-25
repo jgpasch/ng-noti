@@ -37,12 +37,12 @@ export class LoginFormComponent implements OnInit {
       const creds = { email: this.loginForm.value.email, password: this.loginForm.value.password };
       this.authService.login(creds).subscribe((result) => {
         if (result) {
-          console.log('take me away');
           this.router.navigate(['home']);
         }
       }, (err) => {
         if (err.status === 0) {
         } else {
+          console.log(err);
           const json = JSON.parse(err._body);
           this.firstInput.nativeElement.focus();
         }
