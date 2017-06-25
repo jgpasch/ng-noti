@@ -1,0 +1,46 @@
+#my-header {
+  background-color: #55d6aa;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  border-bottom: 1px solid #75f6ca;
+}
+
+#app-tabs li a {
+  color: #444;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.nav li a {
+  border: 0;
+}
+
+.nav li a::before {
+  content: '';
+  display: block;
+  height: 4px;
+  background-color: #eff3ff;
+  width: 0%;
+
+  transition: all ease-in-out 250ms;
+}
+
+.nav li a:hover::before {
+  width: 100%;
+}
+
+.nav li:hover a {
+  border: none;
+  background: none;
+}
+
+.navbar-brand {
+  transition: all 3500ms ease;
+}
+
+.navbar-brand:hover {
+  font-size: 220px;
+  transition: all 5000ms ease;
+}
