@@ -1,0 +1,20 @@
+.app-container {
+  min-height: calc(100% - 67px);
+  background-color: #e8f0fd;
+
+}
+
+.outlet-wrapper {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.card-wrapper {
+  display: flex;
+  flex: 1 0 25%;
+  flex-direction: row;
+  justify-content: center;
+}

@@ -1,0 +1,35 @@
+.top-section {
+  background-color: #ddd;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  position: relative;
+  padding-right: 10px;
+  padding-top: 5px;
+  // background-image: url("../../../../assets/images/crypto-background.jpg");
+  // background: url("../../../../assets/images/background.png");
+  // background-position: center center;
+  // opacity: 0.2;
+  // background-attachment: fixed;
+
+  img {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    // top: 100px;
+    top: 50%;
+    // margin-top: -50px;
+    right: 50%;
+    margin-right: -50px;
+  }
+
+  div:first-child {
+    margin-right: 2px;
+  }
+
+  .btn:focus, .btn:active {
+    outline: none !important;
+  }
+}
+
