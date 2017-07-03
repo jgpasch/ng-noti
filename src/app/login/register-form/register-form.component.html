@@ -1,0 +1,24 @@
+<div class="">
+    <form id="register-form" name="form" [formGroup]="registerForm" (ngSubmit)="onSubmit()" novalidate>
+      <div class="form-group" [ngClass]="{}">
+          <label for="email">email</label>
+          <input #firstInput type="text" class="form-control" [ngClass]="{error: email.touched && email.invalid}" name="email" [formControl]="email" required />
+      </div>
+      <div class="form-group" [ngClass]="{}">
+          <label for="password">password</label>
+          <input #firstInput type="text" class="form-control" [ngClass]="{error: password.touched && password.invalid}" name="password" [formControl]="password" required />
+      </div>
+      <div class="form-group" [ngClass]="{}">
+          <label for="confirm-password">confirm-password</label>
+          <input #firstInput type="text" class="form-control" [ngClass]="{error: confirm-password.touched && confirm-password.invalid}" name="confirm-password" [formControl]="confirm-password" required />
+      </div>
+      <div class="form-group" >
+          <label for="number">number</label>
+          <input type="number" class="form-control" [ngClass]="{error: number.touched && number.invalid}" name="number" [formControl]="number" required />
+          <div class="password-error-div"><p class="error-msg" *ngIf="apiError">{{apiError}}</p></div>
+      </div>
+      <div class="form-group">
+          <button [disabled]="loading || !this.registerForm.valid" class="btn btn-primary">Register</button>
+      </div>
+    </form>
+</div>

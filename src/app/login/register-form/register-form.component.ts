@@ -10,37 +10,42 @@ import {
 import { AuthService } from '../../shared/services/auth.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login-form.component.html',
-  styleUrls: ['./login-form.component.scss']
+  selector: 'app-register-form',
+  templateUrl: './register-form.component.html',
+  styleUrls: ['./register-form.component.scss']
 })
-export class LoginFormComponent implements OnInit {
-  loginForm: FormGroup;
+export class RegisterFormComponent implements OnInit {
+  registerForm: FormGroup;
   apiError;
   @ViewChild('firstInput') firstInput;
 
   email = new FormControl('', [ Validators.required ]);
   password = new FormControl('', [ Validators.required ]);
+  confirmPassword = new FormControl('', [ Validators.required ]);
+  number = new FormControl('', [ Validators.required ]);
 
   constructor(private authService: AuthService, private router: Router, private builder: FormBuilder) {
     this.createForm();
   }
 
   createForm() {
-    this.loginForm = this.builder.group({
+    this.registerForm = this.builder.group({
       email: this.email,
-      password: this.password
+      password: this.password,
+      confirmPassword: this.confirmPassword,
+      number: this.number
     });
 
-    this.loginForm.valueChanges.subscribe(data => {
+    this.registerForm.valueChanges.subscribe(data => {
       this.apiError = null;
     })
   }
 
   onSubmit() {
-    if (this.loginForm.valid) {
-      const creds = { email: this.loginForm.value.email, password: this.loginForm.value.password };
-      this.authService.login(creds).subscribe((result) => {
+    if (this.registerForm.valid) {
+      // tslint:disable-next-line:max-line-length
+      const creds = { email: this.registerForm.value.email, password: this.registerForm.value.password, number: this.registerForm.value.number };
+      this.authService.register(creds).subscribe((result) => {
         if (result) {
           this.router.navigate(['home']);
         }
@@ -48,12 +53,6 @@ export class LoginFormComponent implements OnInit {
         if (err.status === 0) {
         } else {
           console.log(err);
-          const body = JSON.parse(err._body)
-          this.apiError = body.error;
-          if (this.apiError.substring(0, 6) === 'crypto') {
-            this.apiError = 'Incorrect email/password combination';
-          }
-          this.firstInput.nativeElement.focus();
         }
       });
     } else {

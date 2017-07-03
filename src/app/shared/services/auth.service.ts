@@ -25,13 +25,25 @@ export class AuthService {
   login(postData) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:8080/auth/login', postData)
+    return this.http.post(`${server.url}/auth/login`, postData)
       .map(res => res.json())
       .map(data => {
         localStorage.setItem('token', data.token);
         localStorage.setItem('username', this.getHandle(data.email));
         return data;
       });
+  }
+
+  register(postData) {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+  return this.http.post(`${server.url}/auth/register`, postData)
+    .map(res => res.json())
+    .map(data => {
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('username', this.getHandle(data.email));
+      return data;
+    });
   }
 
   logout() {

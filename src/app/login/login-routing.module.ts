@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { LoginRouting } from './login.routing';
 
 @NgModule({
-  imports: [ LoginRouting ],
+  imports: [ LoginRouting, RouterModule ],
   exports: [ RouterModule ]
 })
 export class LoginRoutingModule { }
