@@ -22,15 +22,15 @@ export class AuthService {
     return localStorage.getItem('username');
   }
 
-  login(data) {
+  login(postData) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post(`http://localhost:8000/auth/login`, data, {headers})
+    return this.http.post('http://localhost:8080/auth/login', postData)
       .map(res => res.json())
-      .map(res => {
-        localStorage.setItem('token', res.token);
-        localStorage.setItem('username', this.getHandle(res.user));
-        return res;
+      .map(data => {
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('username', this.getHandle(data.email));
+        return data;
       });
   }
 
