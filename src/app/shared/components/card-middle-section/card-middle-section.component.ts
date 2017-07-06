@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-card-middle-section',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./card-middle-section.component.scss']
 })
 export class CardMiddleSectionComponent implements OnInit {
+  @Input() token: string;
 
   constructor() { }
 

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
+import { CommonModule } from '@angular/common';
 
 import { AuthService } from './services/auth.service';
 import { AuthGuardService } from './services/auth-guard.service';
@@ -9,7 +10,7 @@ import { CardMiddleSectionComponent } from './components/card-middle-section/car
 import { CardBottomSectionComponent } from './components/card-bottom-section/card-bottom-section.component';
 
 @NgModule({
-  imports: [ HttpModule ],
+  imports: [ HttpModule, CommonModule ],
   providers: [ AuthGuardService, AuthService ],
   declarations: [ CardComponent, CardTopSectionComponent, CardMiddleSectionComponent, CardBottomSectionComponent ],
   exports: [ CardComponent ]

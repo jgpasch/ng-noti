@@ -7,7 +7,8 @@
   </div>
     <div>
     <button class="btn btn-default btn-sm">
-      <span class="glyphicon glyphicon-trash"></span>
+      <span *ngIf="!active" (click)="activeClicked()" class="glyphicon glyphicon-play"></span>
+      <span *ngIf="active" (click)="activeClicked()" class="glyphicon glyphicon-stop"></span>
     </button>
   </div>
 </div>

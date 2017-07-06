@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-card-bottom-section',
@@ -6,6 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./card-bottom-section.component.scss']
 })
 export class CardBottomSectionComponent implements OnInit {
+  @Input() percent: number;
+  @Input() minVal: number;
+  @Input() maxVal: number;
+
 
   constructor() { }
 
