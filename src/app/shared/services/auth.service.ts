@@ -11,7 +11,7 @@ export class AuthService {
   constructor(private http: Http) { }
 
   isAuthenticated() {
-    return (this.getToken() !== null) ? true : false;
+    return this.getToken() !== null;
   }
 
   getToken() {

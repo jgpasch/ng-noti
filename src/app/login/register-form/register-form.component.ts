@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 
 import { AuthService } from '../../shared/services/auth.service';
+import { emailValidator } from './email-validator';
 
 @Component({
   selector: 'app-register-form',
@@ -19,10 +20,9 @@ export class RegisterFormComponent implements OnInit {
   apiError;
   @ViewChild('firstInput') firstInput;
 
-  email = new FormControl('', [ Validators.required ]);
+  email = new FormControl('', [ Validators.required, emailValidator() ]);
   password = new FormControl('', [ Validators.required ]);
   confirmPassword = new FormControl('', [ Validators.required ]);
-  number = new FormControl('', [ Validators.required ]);
 
   constructor(private authService: AuthService, private router: Router, private builder: FormBuilder) {
     this.createForm();
@@ -32,8 +32,7 @@ export class RegisterFormComponent implements OnInit {
     this.registerForm = this.builder.group({
       email: this.email,
       password: this.password,
-      confirmPassword: this.confirmPassword,
-      number: this.number
+      confirmPassword: this.confirmPassword
     });
 
     this.registerForm.valueChanges.subscribe(data => {
@@ -43,8 +42,13 @@ export class RegisterFormComponent implements OnInit {
 
   onSubmit() {
     if (this.registerForm.valid) {
-      // tslint:disable-next-line:max-line-length
-      const creds = { email: this.registerForm.value.email, password: this.registerForm.value.password, number: this.registerForm.value.number };
+      // Check to see if passwords match
+      if (this.registerForm.value.password !== this.registerForm.value.confirmPassword) {
+        this.apiError = 'Passwords must match';
+        return false;
+      }
+
+      const creds = { email: this.registerForm.value.email, password: this.registerForm.value.password };
       this.authService.register(creds).subscribe((result) => {
         if (result) {
           this.router.navigate(['home']);
@@ -52,8 +56,10 @@ export class RegisterFormComponent implements OnInit {
       }, (err) => {
         if (err.status === 0) {
         } else {
-          console.log(err);
+          const body = JSON.parse(err._body);
+          this.apiError = body.error;
         }
+        this.firstInput.nativeElement.focus();
       });
     } else {
       this.email.markAsTouched();

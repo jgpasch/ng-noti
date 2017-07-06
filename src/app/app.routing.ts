@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'login', loadChildren: './login/login.module#LoginModule' },
+  { path: 'auth', loadChildren: './login/login.module#LoginModule' },
   { path: 'home', loadChildren: './home/home.module#HomeModule' , canActivate: [AuthGuardService]},
   { path: '**', redirectTo: 'home'}
 ];

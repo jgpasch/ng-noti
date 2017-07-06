@@ -1,14 +1,8 @@
-#login-form {
-  .error-msg {
-    position: absolute;
+@import "../../../assets/styles/_mixins.scss";
 
-    font-size: 13px;
-    margin-top: 5px;
-    color: red;
-  }
+#login-form {
 
   button {
-    margin-top: 15px;
     margin-right: 20px;
   }
 
@@ -18,11 +12,30 @@
     justify-content: center;
   }
 
+
+
+  .error-msg {
+    position: absolute;
+
+    font-size: 15px;
+    margin-top: 5px;
+    color: red;
+  }
+
   .buttons {
+    padding-top: 15px;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: baseline;
   }
+
+  input[type="password"] {
+    @include input-placeholder {
+      position: relative;
+      top: 3px;
+    }
+  }
 }
+
 
