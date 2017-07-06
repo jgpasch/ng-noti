@@ -19,4 +19,21 @@ export class DashboardComponent implements OnInit {
     }, (err) => { console.log(err); });
   }
 
+  toggleActiveCb(id: number) {
+    let ind;
+    const sub = this.subscriptions.filter((obj, i) => {
+      if (obj.id === id) {
+        ind = i;
+        return true;
+      } else {
+        return false;
+      }
+    });
+    this.subSvc.toggleActive(sub[0]).subscribe((res) => {
+      if (res) {
+        this.subscriptions[ind] = res;
+      }
+    });
+  }
+
 }

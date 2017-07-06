@@ -1,5 +1,5 @@
 <div class="bottom-section">
-  <div class="info-holder">
+  <div *ngIf="active" class="info-holder">
     <div class="info">
       <span class="info-label">notify %</span>
       <span class="info-value">{{percent}}</span>
@@ -13,6 +13,11 @@
     <div class="info">
       <span class="info-label">Max Value</span>
       <span class="info-value">{{maxVal}}</span>
+    </div>
+  </div>
+  <div *ngIf="!active" class="info-holder">
+    <div class="info-inactive">
+      <p>Please press the play button to start watching this coin</p>
     </div>
   </div>
 </div>

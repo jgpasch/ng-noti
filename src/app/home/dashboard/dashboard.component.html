@@ -1,7 +1,7 @@
 <section class="app-container">
   <div class="container">
     <div class="outlet-wrapper">
-      <div *ngFor="let sub of subscriptions" class="card-wrapper"><app-card [sub]="sub"></app-card></div>
+      <div *ngFor="let sub of subscriptions; index as i" class="card-wrapper"><app-card (toggleActive)="toggleActiveCb($event)" [sub]="sub" ></app-card></div>
     </div>
   </div>
 </section>

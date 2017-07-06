@@ -1,5 +1,5 @@
-import { Component, Input, OnInit, OnChanges, ViewEncapsulation } from '@angular/core';
-import { SubscriptionService } from '../../services/subscription.service';
+import { Component, Input, OnInit, OnChanges, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
+// import { SubscriptionService } from '../../services/subscription.service';
 
 @Component({
   selector: 'app-card',
@@ -9,20 +9,16 @@ import { SubscriptionService } from '../../services/subscription.service';
 })
 export class CardComponent implements OnInit, OnChanges {
   @Input() sub: any;
+  @Output() toggleActive: EventEmitter<number> = new EventEmitter<number>();
 
-  constructor(private subSvc: SubscriptionService) {
+  constructor() {
   }
 
-  toggleActiveCb() {
-    this.subSvc.toggleActive(this.sub).subscribe((res) => {
-      if (res) {
-        this.sub = res;
-      }
-    });
+  toggleActiveCb(id) {
+    this.toggleActive.emit(id);
   }
 
   ngOnChanges() {
-    console.log('a card has been changed');
   }
 
   ngOnInit() {

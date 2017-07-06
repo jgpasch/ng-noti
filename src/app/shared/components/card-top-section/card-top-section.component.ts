@@ -7,13 +7,13 @@ import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 })
 export class CardTopSectionComponent implements OnInit {
   @Input() active: boolean;
-  @Output() toggleActive: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Input() id: number;
+  @Output() toggleActive: EventEmitter<number> = new EventEmitter<number>();
 
   constructor() { }
 
   activeClicked() {
-    console.log('o was clicekd');
-    // this.toggleActive.emit(this.active);
+    this.toggleActive.emit(this.id);
   }
 
   ngOnInit() {

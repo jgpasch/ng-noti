@@ -5,10 +5,11 @@
       <span class="glyphicon glyphicon-edit"></span>
     </button>
   </div>
-    <div>
-    <button class="btn btn-default btn-sm">
-      <span *ngIf="!active" (click)="activeClicked()" class="glyphicon glyphicon-play"></span>
-      <span *ngIf="active" (click)="activeClicked()" class="glyphicon glyphicon-stop"></span>
+  <div>
+    <button (click)="activeClicked()" class="btn btn-default btn-sm">
+      <span *ngIf="!active" class="glyphicon glyphicon-play"></span>
+      <span *ngIf="active" class="glyphicon glyphicon-stop"></span>
     </button>
+
   </div>
 </div>

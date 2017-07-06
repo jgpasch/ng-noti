@@ -9,6 +9,7 @@ export class CardBottomSectionComponent implements OnInit {
   @Input() percent: number;
   @Input() minVal: number;
   @Input() maxVal: number;
+  @Input() active: number;
 
 
   constructor() { }
