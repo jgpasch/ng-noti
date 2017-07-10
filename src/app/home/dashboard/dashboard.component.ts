@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, EventEmitter, Output, Input, OnChanges } from '@angular/core';
 import { SubscriptionService } from '../../shared/services/subscription.service';
 
 @Component({
@@ -6,7 +6,10 @@ import { SubscriptionService } from '../../shared/services/subscription.service'
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnChanges {
+  @ViewChild('toggler') toggler;
+  @ViewChild('pcwrapper') wrapper;
+  @Input() menuDisplayed: boolean;
   subscriptions: any;
 
   constructor(private subSvc: SubscriptionService) { }
@@ -17,6 +20,10 @@ export class DashboardComponent implements OnInit {
         this.subscriptions = res;
       }
     }, (err) => { console.log(err); });
+  }
+
+  ngOnChanges(changes) {
+    console.log(changes.menuDisplayed);
   }
 
   toggleActiveCb(id: number) {

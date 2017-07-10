@@ -1,27 +1,23 @@
-<nav class="navbar navbar-inverse" id="my-header">
-  <div class="container-fluid">
-
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNav" aria-expanded="false">
-        <span class="sr-only">Toggle Nav</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-        <a [routerLink]="['']" class="navbar-brand">Crypto</a>
+<div id="sidebar-wrapper" [ngClass]="{'menuDisplayed': expanded}">
+  <!-- expanded -->
+  <ul *ngIf="expanded" class="sidebar-nav" id="#navbar-collapse-1">
+    <div class="brand-header">
+      <h2>Crypto</h2>
     </div>
+    <li><a href="#"><span class="glyphicon glyphicon-home"></span>Home</a></li>
+    <li><a href="#"><span class="glyphicon glyphicon-th-large"></span>Subs</a></li>
+    <li><a (click)="logout()"><span class="glyphicon glyphicon-log-out"></span>Logout, {{authService.getUsername()}}</a></li>
+  </ul>
 
-    <div class="collapse navbar-collapse" id="my-nav">
-      <ul class="nav navbar-nav" id="app-tabs">
-        <li><a [routerLink]="['']">Home<span class="sr-only">(current)</span></a></li>
-        <li><a [routerLink]="['']">Subscriptions</a></li>
-      </ul>
-
-      <ul class="nav navbar-nav navbar-right">
-        <li *ngIf="!authService.isAuthenticated"><a [routerLink]="['auth']">Login</a></li>
-        <li *ngIf="authService.isAuthenticated"><a (click)="logout()">Logout, {{authService.getUsername()}}</a></li>
-      </ul>
-    </div>
-
-  </div>
-</nav>
+  <!-- minimized -->
+  <ul class="sidebar-icons" *ngIf="!expanded"  id="#navbar-collapse-1">
+    <li>
+      <a (click)="toggleMenu()" class="btn btn-info btn-sm">
+        <span class="glyphicon glyphicon-menu-hamburger"></span>
+      </a>
+    </li>
+    <li><span class="glyphicon glyphicon-home"></span></li>
+    <li><span class="glyphicon glyphicon-th-large"></span></li>
+    <li><span class="glyphicon glyphicon-log-out"></span></li>
+  </ul>
+</div>

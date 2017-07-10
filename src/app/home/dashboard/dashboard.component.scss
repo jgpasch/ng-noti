@@ -1,20 +1,13 @@
-.app-container {
-  min-height: calc(100% - 67px);
+#page-content-wrapper {
+  width: calc(100% - 50px);
+  position: absolute;
+  padding: 15px;
+  transition: all 200ms ease-in-out;
+  margin-left: 50px;
   background-color: #e8f0fd;
-
+  height: 100%;
 }
 
-.outlet-wrapper {
-  margin-top: 20px;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-}
-
-.card-wrapper {
-  display: flex;
-  flex: 1 0 25%;
-  flex-direction: row;
-  justify-content: center;
+.menuDisplayed {
+  margin-left:250px !important;
 }

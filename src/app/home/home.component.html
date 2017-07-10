@@ -1,4 +1,4 @@
-<div class="main">
-  <app-header></app-header>
-  <app-dashboard></app-dashboard>
+<div class="main" #main>
+  <app-header (menuToggle)="toggleMenu($event)" ></app-header>
+  <app-dashboard [menuDisplayed]="menuDisplayed"></app-dashboard>
 </div>
