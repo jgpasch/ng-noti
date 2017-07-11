@@ -1,6 +1,7 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../shared/services/auth.service';
 import { Router } from '@angular/router';
+import { SidebarService } from '../../shared/services/sidebar.service';
 
 @Component({
   selector: 'app-header',
@@ -8,30 +9,42 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  @Output() menuToggle: EventEmitter<any> = new EventEmitter<any>();
   expanded = false;
+  expandedText = false;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private sidebarSvc: SidebarService) {
+    }
 
   ngOnInit() {
-    console.log('emitting: ', this.expanded);
-    this.menuToggle.emit(this.expanded);
+    this.sidebarSvc.getMessage().subscribe(expanded => {
+      if (!expanded) {
+        this.closeMenu();
+      }
+    });
   }
 
-  toggleMenu() {
-    this.menuToggle.emit(1);
-    if (this.expanded === true) {
-      this.expanded = !this.expanded;
+  openMenu() {
+    this.expanded = !this.expanded;
+    this.sidebarSvc.setExpanded(true);
+    if (this.expandedText === true) {
+      this.expandedText = !this.expandedText;
     } else {
       setTimeout(() => {
-        this.expanded = !this.expanded;
+        this.expandedText = !this.expandedText;
       }, 150)
     }
+  }
+
+  closeMenu() {
+    this.expanded = !this.expanded;
+    this.expandedText = !this.expandedText;
   }
 
   logout() {
     this.router.navigate(['auth']);
     this.authService.logout();
   }
-
 }

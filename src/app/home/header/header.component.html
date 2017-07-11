@@ -1,23 +1,23 @@
 <div id="sidebar-wrapper" [ngClass]="{'menuDisplayed': expanded}">
   <!-- expanded -->
-  <ul *ngIf="expanded" class="sidebar-nav" id="#navbar-collapse-1">
+  <ul *ngIf="expandedText" class="sidebar-nav" id="#navbar-collapse-1">
     <div class="brand-header">
       <h2>Crypto</h2>
     </div>
     <li><a href="#"><span class="glyphicon glyphicon-home"></span>Home</a></li>
     <li><a href="#"><span class="glyphicon glyphicon-th-large"></span>Subs</a></li>
-    <li><a (click)="logout()"><span class="glyphicon glyphicon-log-out"></span>Logout, {{authService.getUsername()}}</a></li>
+    <li (click)="logout()"><a><span class="glyphicon glyphicon-log-out"></span>Logout, {{authService.getUsername()}}</a></li>
   </ul>
 
   <!-- minimized -->
-  <ul class="sidebar-icons" *ngIf="!expanded"  id="#navbar-collapse-1">
+  <ul class="sidebar-icons" *ngIf="!expandedText"  id="#navbar-collapse-1">
     <li>
-      <a (click)="toggleMenu()" class="btn btn-info btn-sm">
+      <a (click)="openMenu()" class="btn btn-info btn-sm">
         <span class="glyphicon glyphicon-menu-hamburger"></span>
       </a>
     </li>
     <li><span class="glyphicon glyphicon-home"></span></li>
     <li><span class="glyphicon glyphicon-th-large"></span></li>
-    <li><span class="glyphicon glyphicon-log-out"></span></li>
+    <li (click)="logout()"><span class="glyphicon glyphicon-log-out"></span></li>
   </ul>
 </div>

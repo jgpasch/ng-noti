@@ -1,18 +1,17 @@
-import { Component, OnInit, ViewChild, EventEmitter, Output, Input, OnChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SubscriptionService } from '../../shared/services/subscription.service';
+import { SidebarService } from '../../shared/services/sidebar.service';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit, OnChanges {
-  @ViewChild('toggler') toggler;
-  @ViewChild('pcwrapper') wrapper;
-  @Input() menuDisplayed: boolean;
+export class DashboardComponent implements OnInit {
+  menuDisplayed: boolean;
   subscriptions: any;
 
-  constructor(private subSvc: SubscriptionService) { }
+  constructor(private subSvc: SubscriptionService, private sidebarSvc: SidebarService) { }
 
   ngOnInit() {
     this.subSvc.getAllSubscriptions().subscribe((res) => {
@@ -20,10 +19,14 @@ export class DashboardComponent implements OnInit, OnChanges {
         this.subscriptions = res;
       }
     }, (err) => { console.log(err); });
-  }
 
-  ngOnChanges(changes) {
-    console.log(changes.menuDisplayed);
+    this.sidebarSvc.getMessage().subscribe(expanded => {
+      if (expanded) {
+        this.menuDisplayed = true;
+      } else {
+        this.menuDisplayed = false;
+      }
+    })
   }
 
   toggleActiveCb(id: number) {
