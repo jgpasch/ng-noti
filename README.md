@@ -1,28 +1,18 @@
-# NgNoti
-
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.1.2.
 
-## Development server
+This project is a web app for managing SMS updates to changes in cryptocurrency prices. To run this project locally, you must also run the backend server.
+The most updated server is written using golang. It can be found here https://github.com/jgpasch/crypto-go.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+In the app, you create subscriptions to different cryptocurrencies, on which you set the percent of change upon which you wish to be notified for each currency.
 
-## Code scaffolding
+You can also set a minimum value, and maximum value for each currency, that will make an SMS message be sent out if the currency reaches either the high or the low.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|module`.
+The backend for this project, one version in golang and another in node, are really tailored for personal use, as you need to have a nexmo account with funds, in order
+for SMS messages to be sent out. Please see the backend github page in order to see how to change the details for your personal nexmo account. https://github.com/jgpasch/crypto-go
 
-## Build
+Steps to run:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+1. Clone project
+2. npm install
+3. ng serve
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
