@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map'
 import { Http, Headers } from '@angular/http';
@@ -8,7 +9,9 @@ import server from '../../config/server';
 export class AuthService {
   isLoggedIn: Boolean;
 
-  constructor(private http: Http) { }
+  constructor(
+    private http: Http,
+    private router: Router) { }
 
   isAuthenticated() {
     return this.getToken() !== null;
@@ -49,6 +52,7 @@ export class AuthService {
   logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('username');
+    this.router.navigate(['auth']);
   }
 
   getHandle(email) {
