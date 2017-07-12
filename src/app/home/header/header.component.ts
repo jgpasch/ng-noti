@@ -9,13 +9,15 @@ import { SidebarService } from '../../shared/services/sidebar.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  expanded = false;
-  expandedText = false;
+  expanded: boolean;
+  expandedText: boolean;
 
   constructor(
     private authService: AuthService,
     private router: Router,
     private sidebarSvc: SidebarService) {
+      this.expanded = this.sidebarSvc.sidebarOpened;
+      this.expandedText = this.sidebarSvc.sidebarOpened;
     }
 
   ngOnInit() {

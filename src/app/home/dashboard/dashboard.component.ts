@@ -15,7 +15,9 @@ export class DashboardComponent implements OnInit {
   constructor(
     private subSvc: SubscriptionService,
     private sidebarSvc: SidebarService,
-    private authSvc: AuthService) { }
+    private authSvc: AuthService) {
+      this.menuDisplayed = this.sidebarSvc.sidebarOpened;
+    }
 
   ngOnInit() {
     this.subSvc.getAllSubscriptions().subscribe((res) => {
