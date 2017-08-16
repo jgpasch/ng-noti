@@ -9,11 +9,16 @@ export class CardTopSectionComponent implements OnInit {
   @Input() active: boolean;
   @Input() id: number;
   @Output() toggleActive: EventEmitter<number> = new EventEmitter<number>();
+  @Output() editSub: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor() { }
 
   activeClicked() {
     this.toggleActive.emit(this.id);
+  }
+
+  editSubClicked() {
+    this.editSub.emit(true);
   }
 
   ngOnInit() {

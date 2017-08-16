@@ -24,8 +24,7 @@ export class SubscriptionService {
   toggleActive(sub: any) {
     const headers = new Headers();
     headers.append('authorization', localStorage.getItem('token'));
-    const postData = Object.assign({}, sub, { active: !sub.active });
-    return this.http.put(`${server.url}/subscriptions/${sub.id}`, postData, { headers })
+    return this.http.get(`${server.url}/subscriptions/toggle/${sub.id}`, { headers })
       .map(res => res.json())
       .catch(err => Observable.throw(err));
   }

@@ -1,0 +1,12 @@
+<div class="edit-form">
+  <form name="form" [formGroup]="editForm" (ngSubmit)="onSubmit()" novalidate>
+    <div class="form-group">
+      <h2>{{sub.token}}</h2>
+    </div>
+    <div class="form-group">
+      <label for="percent">Percent</label>
+      <input type="text" class="form-control myinput" name="percent" placeholder="{{sub.percent}}"/>
+    </div>
+    <button type="button" class="btn btn-small" (click)="leaveEditMode()"></button>
+  </form>
+</div>

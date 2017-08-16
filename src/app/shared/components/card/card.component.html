@@ -1,11 +1,14 @@
-<div class="app-card">
-  <div class="card-top">
-    <app-card-top-section [id]="sub.id" [active]="sub.active" (toggleActive)="toggleActiveCb($event)"></app-card-top-section>
-  </div>
-  <div class="card-middle">
-    <app-card-middle-section [token]="sub.token"></app-card-middle-section>
-  </div>
-  <div class="card-bottom">
-    <app-card-bottom-section [active]="sub.active" [percent]="sub.percent" [minVal]="sub.minVal" [maxVal]="sub.maxVal"></app-card-bottom-section>
-  </div>
+<div class="app-card" *ngIf="!editMode">
+     <div class="card-top">
+      <app-card-top-section [id]="sub.id" [active]="sub.active" (toggleActive)="toggleActiveCb($event)" (editSub)="editSubCb()"></app-card-top-section>
+    </div>
+    <div class="card-middle">
+      <app-card-middle-section [token]="sub.token"></app-card-middle-section>
+    </div>
+    <div class="card-bottom">
+      <app-card-bottom-section [active]="sub.active" [percent]="sub.percent" [minVal]="sub.minVal" [maxVal]="sub.maxVal"></app-card-bottom-section>
+    </div>
+</div>
+<div *ngIf="editMode" class="app-card">
+  <app-card-edit [sub]="sub" (leaveEdit)="editSubCb()"></app-card-edit>
 </div>

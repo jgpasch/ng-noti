@@ -22,6 +22,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.subSvc.getAllSubscriptions().subscribe((res) => {
       if (res) {
+        console.log(res);
         this.subscriptions = res;
       }
     }, (err) => {
@@ -53,7 +54,8 @@ export class DashboardComponent implements OnInit {
     });
     this.subSvc.toggleActive(sub[0]).subscribe((res) => {
       if (res) {
-        this.subscriptions[ind] = res;
+        // this.subscriptions[ind] = res;
+        this.subscriptions[ind].active = !this.subscriptions[ind].active;
       }
     });
   }

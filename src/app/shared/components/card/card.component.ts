@@ -10,12 +10,17 @@ import { Component, Input, OnInit, OnChanges, Output, EventEmitter, ViewEncapsul
 export class CardComponent implements OnInit, OnChanges {
   @Input() sub: any;
   @Output() toggleActive: EventEmitter<number> = new EventEmitter<number>();
+  editMode = true;
 
   constructor() {
   }
 
   toggleActiveCb(id) {
     this.toggleActive.emit(id);
+  }
+
+  editSubCb() {
+    this.editMode = !this.editMode;
   }
 
   ngOnChanges() {

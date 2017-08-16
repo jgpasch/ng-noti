@@ -36,7 +36,7 @@ export class HeaderComponent implements OnInit {
     } else {
       setTimeout(() => {
         this.expandedText = !this.expandedText;
-      }, 150)
+      }, 250)
     }
   }
 
