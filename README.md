@@ -1,6 +1,4 @@
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.1.2.
-
-This project is a web app for managing SMS updates to changes in cryptocurrency prices. To run this project locally, you must also run the backend server.
+This project is a web app for managing SMS updates to changes in cryptocurrency prices. *To run this project locally, you must also run the backend server.*
 The most updated server is written using golang. It can be found here https://github.com/jgpasch/crypto-go.
 
 In the app, you create subscriptions to different cryptocurrencies, on which you set the percent of change upon which you wish to be notified for each currency.
@@ -12,7 +10,8 @@ for SMS messages to be sent out. Please see the backend github page in order to 
 
 Steps to run:
 
-1. Clone project
-2. npm install
-3. ng serve
+### 1. Clone project
+### 2. npm install
+### 3. make sure that the port in */src/app/config/server.ts* matches the port that you set for the golang backend server. Find link above.
+### 4. ng serve
 
