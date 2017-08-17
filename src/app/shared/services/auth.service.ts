@@ -49,6 +49,14 @@ export class AuthService {
     });
   }
 
+  verify(code: number) {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('authorization', localStorage.getItem('token'));
+    return this.http.get(`${server.url}/users/verify/${code}`, {headers})
+      .map(res => res.json());
+  }
+
   logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('username');

@@ -11,7 +11,11 @@
       <div class="form-group" [ngClass]="{}">
           <label for="confirmPassword">Confirm Password</label>
           <input #firstInput type="password" class="form-control" [ngClass]="{error: confirm-password.touched && confirm-password.invalid}" name="confirm-password" [formControl]="confirmPassword" placeholder="********"/>
-          <div class="password-error-div"><p class="error-msg" *ngIf="apiError">{{apiError}}</p></div>
+      </div>
+      <div class="form-group">
+        <label for="phoneNumber">Phone Number</label>
+        <input #number type="text" class="form-control" [ngClass]="{error: phoneNumber.touched && phoneNumber.invalid}" name="phoneNumber" [formControl]="phoneNumber" placeholder="703 999 8888"/>
+        <div class="password-error-div"><p class="error-msg" *ngIf="apiError">{{apiError}}</p></div>
       </div>
       <div class="form-group buttons">
           <button [disabled]="!this.registerForm.valid" class="btn btn-primary">Register</button>

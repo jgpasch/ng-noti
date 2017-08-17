@@ -1,0 +1,10 @@
+<div>
+  <form id="verify-form" (ngSubmit)="onSubmit()" [formGroup]="verifyForm" novalidate>
+    <p>Any second, you will receive a code through SMS, please enter that code here</p>
+    <div class="form-group">
+      <input class="form-control" type="text" #firstInput name="code" [formControl]="code">
+      <div class="password-error-div"><p class="error-msg" *ngIf="apiError">{{apiError}}</p></div>
+    </div>
+
+  </form>
+</div>

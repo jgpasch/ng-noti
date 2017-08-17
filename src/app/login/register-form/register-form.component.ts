@@ -23,6 +23,7 @@ export class RegisterFormComponent implements OnInit {
   email = new FormControl('', [ Validators.required, emailValidator() ]);
   password = new FormControl('', [ Validators.required ]);
   confirmPassword = new FormControl('', [ Validators.required ]);
+  phoneNumber = new FormControl('', [ Validators.required ]);
 
   constructor(private authService: AuthService, private router: Router, private builder: FormBuilder) {
     this.createForm();
@@ -32,7 +33,8 @@ export class RegisterFormComponent implements OnInit {
     this.registerForm = this.builder.group({
       email: this.email,
       password: this.password,
-      confirmPassword: this.confirmPassword
+      confirmPassword: this.confirmPassword,
+      phoneNumber: this.phoneNumber
     });
 
     this.registerForm.valueChanges.subscribe(data => {
@@ -48,10 +50,12 @@ export class RegisterFormComponent implements OnInit {
         return false;
       }
 
-      const creds = { email: this.registerForm.value.email, password: this.registerForm.value.password };
+      // tslint:disable-next-line:max-line-length
+      const creds = { email: this.registerForm.value.email, password: this.registerForm.value.password, number: this.registerForm.value.phoneNumber };
       this.authService.register(creds).subscribe((result) => {
         if (result) {
-          this.router.navigate(['home']);
+          console.log('i shuld be here');
+          this.router.navigate(['/auth/verify']);
         }
       }, (err) => {
         if (err.status === 0) {

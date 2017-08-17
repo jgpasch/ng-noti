@@ -1,0 +1,5 @@
+@import '../login-form/login-form.component.scss';
+
+#verify-form {
+  @extend #login-form;
+}
