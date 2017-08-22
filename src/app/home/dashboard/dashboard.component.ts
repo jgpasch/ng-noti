@@ -10,7 +10,7 @@ import { AuthService } from '../../shared/services/auth.service';
 })
 export class DashboardComponent implements OnInit {
   menuDisplayed: boolean;
-  subscriptions: any;
+  subscriptions: any[] = [];
 
   constructor(
     private subSvc: SubscriptionService,

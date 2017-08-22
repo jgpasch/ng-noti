@@ -9,11 +9,14 @@ import { SharedModule } from '../shared/shared.module';
 import { SubscriptionService } from '../shared/services/subscription.service';
 import { SidebarService } from '../shared/services/sidebar.service';
 import { MinimizeMenuOnClickDirective } from './dashboard/minimize-menu-on-click.directive';
+import { NoSubsComponent } from './dashboard/no-subs/no-subs.component';
+import { CreateComponent } from './dashboard/create/create.component';
 
 @NgModule({
   imports: [ HomeRoutingModule, CommonModule, SharedModule, RouterModule ],
   providers: [ SubscriptionService, SidebarService ],
-  declarations: [ HomeComponent, HeaderComponent, DashboardComponent, MinimizeMenuOnClickDirective ],
+  // tslint:disable-next-line:max-line-length
+  declarations: [ HomeComponent, HeaderComponent, DashboardComponent, MinimizeMenuOnClickDirective, NoSubsComponent, CreateComponent ],
   exports: []
 })
 export class HomeModule { }

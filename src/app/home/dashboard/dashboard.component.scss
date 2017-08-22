@@ -1,6 +1,6 @@
 #page-content-wrapper {
   width: calc(100% - 50px);
-  position: absolute;
+  position: relative;
   padding: 15px;
   transition: all 400ms ease-in-out;
   margin-left: 50px;
@@ -9,5 +9,6 @@
 }
 
 .menuDisplayed {
-  margin-left:250px !important;
+  width: calc(100% - 250px) !important;
+  margin-left: 250px !important;
 }
