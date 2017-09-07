@@ -1,13 +1,11 @@
 <div id="page-content-wrapper" #pcwrapper [ngClass]="{'menuDisplayed': menuDisplayed}">
   <app-no-subs *ngIf="subscriptions.length === 0">
   </app-no-subs>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-lg-12">
-        <div *ngFor="let sub of subscriptions; index as i" class="card-wrapper">
+  <div class="container">
+    <div class="row items">
+        <div *ngFor="let sub of subscriptions; index as i" class="">
           <app-card (toggleActive)="toggleActiveCb($event)" [sub]="sub"></app-card>
         </div>
-      </div>
     </div>
   </div>
 </div>

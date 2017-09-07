@@ -10,7 +10,7 @@ import { Component, Input, OnInit, OnChanges, Output, EventEmitter, ViewEncapsul
 export class CardComponent implements OnInit, OnChanges {
   @Input() sub: any;
   @Output() toggleActive: EventEmitter<number> = new EventEmitter<number>();
-  editMode = true;
+  editMode = false;
 
   constructor() {
   }

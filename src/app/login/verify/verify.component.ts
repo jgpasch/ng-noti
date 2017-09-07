@@ -6,6 +6,7 @@ import {
   FormBuilder,
   Validators
 } from '@angular/forms';
+import { MdSnackBar } from '@angular/material';
 import { AuthService } from '../../shared/services/auth.service';
 
 @Component({
@@ -20,7 +21,12 @@ export class VerifyComponent implements OnInit {
 
   code = new FormControl('', [ Validators.required ]);
 
-  constructor(private authService: AuthService, private router: Router, private builder: FormBuilder) {
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private builder: FormBuilder,
+    private snackBar: MdSnackBar
+  ) {
     this.createForm();
   }
 
@@ -40,7 +46,7 @@ export class VerifyComponent implements OnInit {
 
   onSubmit() {
     this.authService.verify(this.verifyForm.value.code).subscribe(res => {
-      console.log(res);
+      this.snackBar.open('Thanks for verifying! You will receive a confirmation message shortly.', 'Ok');
       this.router.navigate(['home']);
     }, (err) => {
       const body = JSON.parse(err._body);

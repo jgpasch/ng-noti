@@ -1,3 +1,29 @@
-<p>
-  create works!
-</p>
+<div class="">
+  <span class="pull-right" (click)="close()">x</span>
+  <form id="create-form" name="create-form" [formGroup]="createForm" novalidate>
+    <div class="form-group" [ngClass]="{}">
+        <label for="token">Token</label>
+        <input #firstInput type="text" class="form-control" [ngClass]="{error: token.touched && token.invalid}" name="token" [formControl]="token" placeholder="DGB"/>
+    </div>
+    <div class="form-group" >
+        <label for="percent">Percent</label>
+        <input type="text" class="form-control" [ngClass]="{error: percent.touched && percent.invalid}" name="percent" [formControl]="percent" placeholder="5"/>
+    </div>
+    <div class="form-group" >
+      <label for="minVal">Min Val Noti</label>
+      <input type="text" class="form-control" [ngClass]="{error: minVal.touched && minVal.invalid}" name="minVal" [formControl]="minVal" placeholder="minVal"/>
+     </div>
+     <div class="form-group" >
+      <label for="maxVal">Max Val Noti</label>
+      <input type="text" class="form-control" [ngClass]="{error: maxVal.touched && maxVal.invalid}" name="maxVal" [formControl]="maxVal" placeholder="maxVal"/>
+     </div>
+     <div class="form-group" >
+      <label for="minMaxChange">Min/Max Val % Change</label>
+      <input type="text" class="form-control" [ngClass]="{error: minMaxChange.touched && minMaxChange.invalid}" name="minMaxChange" [formControl]="minMaxChange" placeholder="minMaxChange"/>
+     </div>
+    <div class="form-group buttons">
+        <button (click)="onSubmit()" [disabled]="!this.createForm.valid" class="btn btn-primary">Save</button>
+        <button (click)="onSubmit(true)" [disabled]="!this.createForm.valid" class="btn btn-success">Save + New</button>
+    </div>
+  </form>
+</div>

@@ -8,6 +8,7 @@ import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 export class CardTopSectionComponent implements OnInit {
   @Input() active: boolean;
   @Input() id: number;
+  @Input() token: string;
   @Output() toggleActive: EventEmitter<number> = new EventEmitter<number>();
   @Output() editSub: EventEmitter<boolean> = new EventEmitter<boolean>();
 

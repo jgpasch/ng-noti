@@ -1,0 +1,11 @@
+#create-form {
+  min-width: 365px;
+
+  .buttons {
+    text-align: center;
+
+    button:first-child {
+      margin-right: 10px;
+    }
+  }
+}

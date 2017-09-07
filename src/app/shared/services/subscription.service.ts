@@ -21,6 +21,16 @@ export class SubscriptionService {
       .catch(err => Observable.throw(err));
   }
 
+  createSubscription(data: any) {
+    console.log(data);
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('authorization', localStorage.getItem('token'));
+    return this.http.post(`${server.url}/subscriptions`, data, { headers })
+      .map(res => res.json())
+      .catch(err => Observable.throw(err));
+  }
+
   toggleActive(sub: any) {
     const headers = new Headers();
     headers.append('authorization', localStorage.getItem('token'));

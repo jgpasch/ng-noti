@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { MdDialog } from '@angular/material';
+import { CreateComponent } from '../create/create.component';
 
 @Component({
   selector: 'app-no-subs',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NoSubsComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialog: MdDialog) { }
 
   ngOnInit() {
   }
 
+  createSub() {
+    const ref = this.dialog.open(CreateComponent);
+  }
 }
+

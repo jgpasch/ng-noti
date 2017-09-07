@@ -1,6 +1,6 @@
 <div class="app-card" *ngIf="!editMode">
      <div class="card-top">
-      <app-card-top-section [id]="sub.id" [active]="sub.active" (toggleActive)="toggleActiveCb($event)" (editSub)="editSubCb()"></app-card-top-section>
+      <app-card-top-section [id]="sub.id" [token]="sub.token" [active]="sub.active" (toggleActive)="toggleActiveCb($event)" (editSub)="editSubCb()"></app-card-top-section>
     </div>
     <div class="card-middle">
       <app-card-middle-section [token]="sub.token"></app-card-middle-section>

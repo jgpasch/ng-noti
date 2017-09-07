@@ -5,7 +5,15 @@
   transition: all 400ms ease-in-out;
   margin-left: 50px;
   background-color: #e8f0fd;
-  height: 100%;
+  min-height: 100%;
+
+  .items {
+
+  }
+
+  .card-wrapper {
+    display: inline-block;
+  }
 }
 
 .menuDisplayed {

@@ -6,9 +6,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { VerifyComponent } from './verify/verify.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-  imports: [ LoginRoutingModule, ReactiveFormsModule, CommonModule ],
+  imports: [ LoginRoutingModule, ReactiveFormsModule, CommonModule, SharedModule ],
   providers: [],
   declarations: [ LoginComponent, LoginFormComponent, RegisterFormComponent, VerifyComponent ],
   exports: []

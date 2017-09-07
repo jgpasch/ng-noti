@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import {
   FormGroup,
@@ -17,12 +17,14 @@ import { AuthService } from '../../shared/services/auth.service';
 export class LoginFormComponent implements OnInit {
   loginForm: FormGroup;
   apiError;
+  loading: boolean;
   @ViewChild('firstInput') firstInput;
 
   email = new FormControl('', [ Validators.required ]);
   password = new FormControl('', [ Validators.required ]);
 
   constructor(private authService: AuthService, private router: Router, private builder: FormBuilder) {
+    this.loading = false;
     this.createForm();
   }
 
@@ -37,15 +39,23 @@ export class LoginFormComponent implements OnInit {
     })
   }
 
+  swiped() {
+    console.log('you sqiped');
+  }
+
   onSubmit() {
     if (this.loginForm.valid) {
+      this.loading = true;
       const creds = { email: this.loginForm.value.email, password: this.loginForm.value.password };
       this.authService.login(creds).subscribe((result) => {
         if (result) {
+          this.loading = false;
           this.router.navigate(['home']);
         }
       }, (err) => {
+        this.loading = false;
         if (err.status === 0) {
+          this.apiError = 'Server error';
         } else {
           console.log(err);
           const body = JSON.parse(err._body)

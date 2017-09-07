@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SubscriptionService } from '../../shared/services/subscription.service';
 import { SidebarService } from '../../shared/services/sidebar.service';
 import { AuthService } from '../../shared/services/auth.service';
+import { SubscriptionCreatedService } from '../../shared/services/subscription-created.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,11 +16,17 @@ export class DashboardComponent implements OnInit {
   constructor(
     private subSvc: SubscriptionService,
     private sidebarSvc: SidebarService,
-    private authSvc: AuthService) {
+    private authSvc: AuthService,
+    private subscriptionCreatedService: SubscriptionCreatedService) {
       this.menuDisplayed = this.sidebarSvc.sidebarOpened;
+      this.subscriptionCreatedService.subAnnounced$.subscribe(sub => {
+        console.log('received: ', sub);
+        this.subscriptions.push(sub);
+      })
     }
 
   ngOnInit() {
+
     this.subSvc.getAllSubscriptions().subscribe((res) => {
       if (res) {
         console.log(res);
