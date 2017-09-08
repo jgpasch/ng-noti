@@ -1,4 +1,9 @@
 <div class="top-section">
+  <div class="delete-wrapper">
+    <button (click)="deleteClicked()" class="btn btn-default btn-sm">
+      <span class="glyphicon glyphicon-trash"></span>
+    </button>
+  </div>
   <img src="../../../../assets/images/{{token}}.png" alt="">
   <div>
     <button (click)="editSubClicked()" class="btn btn-default btn-sm">

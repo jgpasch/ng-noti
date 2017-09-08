@@ -5,7 +5,7 @@
       <h2>Crypto</h2>
     </div>
     <li><a href="#"><span class="glyphicon glyphicon-home"></span>Home</a></li>
-    <li><a href="#"><span class="glyphicon glyphicon-th-large"></span>Subs</a></li>
+    <li (click)="addSub()"><a href="#"><span class="glyphicon glyphicon-plus"></span>Create New</a></li>
     <li (click)="logout()"><a class="logout-text"><span class="glyphicon glyphicon-log-out"></span>Logout, {{authService.getUsername()}}</a></li>
   </ul>
 

@@ -1,4 +1,7 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { MdDialog } from '@angular/material';
+import { ConfirmComponent } from '../confirm/confirm.component';
+import { SubscriptionDeletedService } from '../../services/subscription-deleted.service';
 
 @Component({
   selector: 'app-card-top-section',
@@ -12,7 +15,7 @@ export class CardTopSectionComponent implements OnInit {
   @Output() toggleActive: EventEmitter<number> = new EventEmitter<number>();
   @Output() editSub: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  constructor() { }
+  constructor(private dialog: MdDialog, private deleteSubService: SubscriptionDeletedService) { }
 
   activeClicked() {
     this.toggleActive.emit(this.id);
@@ -20,6 +23,16 @@ export class CardTopSectionComponent implements OnInit {
 
   editSubClicked() {
     this.editSub.emit(true);
+  }
+
+  deleteClicked() {
+    const ref = this.dialog.open(ConfirmComponent);
+    ref.afterClosed().subscribe(deleteConfirmed => {
+      if (deleteConfirmed) {
+        console.log('ok well delete this one then');
+        this.deleteSubService.deleteSub(this.id);
+      }
+    });
   }
 
   ngOnInit() {

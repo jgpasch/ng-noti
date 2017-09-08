@@ -3,6 +3,7 @@ import { SubscriptionService } from '../../shared/services/subscription.service'
 import { SidebarService } from '../../shared/services/sidebar.service';
 import { AuthService } from '../../shared/services/auth.service';
 import { SubscriptionCreatedService } from '../../shared/services/subscription-created.service';
+import { SubscriptionDeletedService } from '../../shared/services/subscription-deleted.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,12 +18,22 @@ export class DashboardComponent implements OnInit {
     private subSvc: SubscriptionService,
     private sidebarSvc: SidebarService,
     private authSvc: AuthService,
-    private subscriptionCreatedService: SubscriptionCreatedService) {
+    private subscriptionCreatedService: SubscriptionCreatedService,
+    private deleteSubService: SubscriptionDeletedService) {
       this.menuDisplayed = this.sidebarSvc.sidebarOpened;
       this.subscriptionCreatedService.subAnnounced$.subscribe(sub => {
         console.log('received: ', sub);
         this.subscriptions.push(sub);
-      })
+      });
+      this.deleteSubService.subDeleted$.subscribe(id => {
+        console.log('ok will delete sub: ', id);
+        this.subscriptions = this.subscriptions.filter(sub => {
+          return sub.id !== id;
+        });
+        this.subSvc.deleteSubscription(id).subscribe(res => {
+          console.log(res);
+        });
+      });
     }
 
   ngOnInit() {

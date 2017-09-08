@@ -1,0 +1,15 @@
+.confirm {
+  text-align: center;
+  width: 250px;
+
+  p {
+    letter-spacing: 1px;
+    font-size: 22px;
+  }
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}

@@ -38,4 +38,12 @@ export class SubscriptionService {
       .map(res => res.json())
       .catch(err => Observable.throw(err));
   }
+
+  deleteSubscription(id: number) {
+    const headers = new Headers();
+    headers.append('authorization', localStorage.getItem('token'));
+    return this.http.delete(`${server.url}/subscriptions/${id}`, { headers })
+      .map(res => res.json())
+      .catch(err => Observable.throw(err));
+    }
 }
