@@ -1,10 +1,11 @@
-<div class="">
+<div (click)="onOutsideClick()" class="">
   <span class="pull-right" style="cursor: pointer" (click)="close()">x</span>
   <form id="create-form" name="create-form" [formGroup]="createForm" novalidate>
-    <div class="form-group" [ngClass]="{}">
+    <!-- <div class="form-group" [ngClass]="{}">
         <label for="token">Token</label>
-        <input #firstInput type="text" class="form-control" [ngClass]="{error: token.touched && token.invalid}" name="token" [formControl]="token" placeholder="DGB"/>
-    </div>
+        <input #firstInput autocomplete="off" type="text" class="form-control" [ngClass]="{error: token.touched && token.invalid}" name="token" [formControl]="token" placeholder="DGB"/>
+    </div> -->
+    <app-typeahead [closeSug]="clickedOutside" (chosenToken)="setChosenToken($event)"></app-typeahead>
     <div class="form-group" >
         <label for="percent">Percent</label>
         <input type="text" class="form-control" [ngClass]="{error: percent.touched && percent.invalid}" name="percent" [formControl]="percent" placeholder="5"/>

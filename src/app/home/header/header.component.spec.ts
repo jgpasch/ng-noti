@@ -3,17 +3,21 @@ import { AuthService } from '../../shared/services/auth.service';
 import { SidebarService } from '../../shared/services/sidebar.service';
 import { HeaderComponent } from './header.component';
 import { RouterTestingModule } from '@angular/router/testing'
-
+import { MdDialogModule } from '@angular/material';
+import { MdDialog } from '@angular/material';
+import { By } from '@angular/platform-browser';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
   let fixture: ComponentFixture<HeaderComponent>;
+  const mdDialogSpy = jasmine.createSpy('MdDialogRef')
+
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule],
       declarations: [ HeaderComponent ],
-      providers: [ SidebarService, { provide: AuthService, useClass: MockAuthService } ]
+      providers: [ SidebarService, { provide: AuthService, useClass: MockAuthService }, { provide: MdDialog, useClass: mdDialogSpy } ]
     })
     .compileComponents();
   }));
@@ -34,9 +38,9 @@ describe('HeaderComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should logout button when user is logged in', inject([AuthService], (service: AuthService) => {
+  it('should show logout button when user is logged in', inject([AuthService], (service: AuthService) => {
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.logout-text').text).toBe('Logout, John');
+    expect(fixture.debugElement.query(By.css('.glyphicon.glyphicon-log-out'))).toBeTruthy();
   }));
 });
 

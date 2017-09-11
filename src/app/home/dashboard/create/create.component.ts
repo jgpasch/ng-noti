@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild} from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MdDialogRef, MdSnackBar } from '@angular/material';
 import {
   FormGroup,
@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { SubscriptionService } from '../../../shared/services/subscription.service';
 import { SubscriptionCreatedService } from '../../../shared/services/subscription-created.service';
+import { TypeaheadComponent } from '../../../shared/components/typeahead/typeahead.component';
 
 @Component({
   selector: 'app-create',
@@ -17,6 +18,8 @@ import { SubscriptionCreatedService } from '../../../shared/services/subscriptio
 export class CreateComponent implements OnInit {
   createForm: FormGroup;
   @ViewChild('firstInput') firstInput;
+  chosenToken: string;
+  clickedOutside: boolean;
 
   token = new FormControl('', [ Validators.required ]);
   percent = new FormControl('', [ Validators.required ]);
@@ -34,6 +37,12 @@ export class CreateComponent implements OnInit {
     private subscriptionCreatedService: SubscriptionCreatedService
   ) {
     this.createSubForm();
+    this.chosenToken = '';
+    this.clickedOutside = false;
+  }
+
+  onOutsideClick() {
+    this.clickedOutside = !this.clickedOutside;
   }
 
   createSubForm() {
@@ -48,6 +57,11 @@ export class CreateComponent implements OnInit {
     // this.createForm.valueChanges.subscribe(data => {
     //   this.apiError = null;
     // })
+  }
+
+  setChosenToken(token) {
+    this.token.setValue(token);
+    console.log(token);
   }
 
   onSubmit(another = false) {
@@ -92,7 +106,6 @@ export class CreateComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.firstInput.nativeElement.focus();
   }
 
 }

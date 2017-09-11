@@ -1,14 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { MdDialogModule } from '@angular/material';
+import { MdDialogRef } from '@angular/material';
 
 import { NoSubsComponent } from './no-subs.component';
 
 describe('NoSubsComponent', () => {
   let component: NoSubsComponent;
   let fixture: ComponentFixture<NoSubsComponent>;
+  const mdDialogSpy = jasmine.createSpy('MdDialogRef')
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NoSubsComponent ]
+      imports: [ MdDialogModule ],
+      declarations: [ NoSubsComponent ],
+      providers: [ { provide: MdDialogRef, useClass: mdDialogSpy}]
     })
     .compileComponents();
   }));

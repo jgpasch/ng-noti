@@ -1,14 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ConfirmComponent } from './confirm.component';
+import { MaterialModule, MdDialogRef } from '@angular/material';
+
 
 describe('ConfirmComponent', () => {
   let component: ConfirmComponent;
   let fixture: ComponentFixture<ConfirmComponent>;
+  const mdDialogSpy = jasmine.createSpy('MdDialogRef');
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ConfirmComponent ]
+      imports: [ MaterialModule ],
+      declarations: [ ConfirmComponent ],
+      providers: [ { provide: MdDialogRef, useClass: mdDialogSpy } ]
     })
     .compileComponents();
   }));

@@ -1,0 +1,13 @@
+<div class="form-group">
+  <label for="token">Token</label>
+  <input autocomplete="off" type="text" id="country" class="form-control" [(ngModel)]="query" (keyup)="filter()" placeholder="DGB">
+  <div class="suggestions-wrapper">
+  <div class="suggestions" *ngIf="filteredList.length > 0">
+      <ul>
+        <li *ngFor="let item of filteredList" (click)="select(item)">
+          <a>{{item}}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
