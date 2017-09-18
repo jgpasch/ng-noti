@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { MdDialogRef, MdSnackBar } from '@angular/material';
 import {
   FormGroup,
@@ -13,7 +13,8 @@ import { TypeaheadComponent } from '../../../shared/components/typeahead/typeahe
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
-  styleUrls: ['./create.component.scss']
+  styleUrls: ['./create.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class CreateComponent implements OnInit {
   createForm: FormGroup;

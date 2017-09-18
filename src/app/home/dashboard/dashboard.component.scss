@@ -1,14 +1,19 @@
+@import "../../../assets/css/_variables";
+
 #page-content-wrapper {
   width: calc(100% - 50px);
   position: relative;
-  padding: 15px;
   transition: all 400ms ease-in-out;
   margin-left: 50px;
   background-color: #e8f0fd;
   min-height: 100%;
 
   .items {
+    // margin-left: calc((100% - 265px) / 2);
 
+    @media #{$small-device} {
+      margin-left: calc((100% - 265px) / 2);
+    }
   }
 
   .card-wrapper {

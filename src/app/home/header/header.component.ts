@@ -44,7 +44,8 @@ export class HeaderComponent implements OnInit {
   }
 
   addSub() {
-    const ref = this.dialog.open(CreateComponent);
+    const ref = this.dialog.open(CreateComponent, {
+    });
 
   }
 
